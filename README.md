@@ -1,0 +1,1 @@
+An e-commerce application to buy and sell home appliances.
