@@ -34,6 +34,6 @@ public class MyController {
         return salesService.save(sales);
     }
 
-
-
+    @GetMapping(value="/display/merchant/{id}")
+    List<Sales> displayMerchantDetails(@PathVariable("id") int id) {return salesService.findByMerchantid(id);}
 }
