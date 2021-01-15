@@ -1,19 +1,18 @@
 package com.example.Inventory.model;
 
-import javax.persistence.Embeddable;
+import java.io.Serializable;
 
-@Embeddable
-public class IdPK {
+public class IdPK implements Serializable {
 
     private int productId;
-    private String merchantId;
+    private int merchantId;
 
-    public IdPK(int productId, String merchantId) {
+    public IdPK(int productId, int merchantId) {
         this.productId = productId;
         this.merchantId = merchantId;
     }
 
-    public void setMerchantId(String merchantId) {
+    public void setMerchantId(int merchantId) {
         this.merchantId = merchantId;
     }
 
@@ -25,7 +24,7 @@ public class IdPK {
         this.productId = productId;
     }
 
-    public String getMerchantId() {
+    public int getMerchantId() {
         return merchantId;
     }
 }

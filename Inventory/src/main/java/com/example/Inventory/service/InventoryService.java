@@ -9,4 +9,5 @@ import java.util.List;
 public interface InventoryService {
     Inventory save (Inventory inventory);
     List<Inventory> findByMerchantId (String id);
+    List<Inventory> findByProductId(int productId);
 }

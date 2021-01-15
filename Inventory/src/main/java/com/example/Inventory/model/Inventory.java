@@ -1,23 +1,57 @@
 package com.example.Inventory.model;
 
+import org.springframework.data.annotation.Id;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Table(name = "Inventory")
 @Entity
+@IdClass(IdPK.class)
 public class Inventory {
-    @EmbeddedId
-    private IdPK idPK;
-    private double price;
+
+    @Id
+    private int merchantId;
+    @Id
+    private int productId;
+
+    public int getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(int merchantId) {
+        this.merchantId = merchantId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    private String brandName;
+    private String productName;
+    private int price;
     private int quantity;
 
-    public Inventory(int productId, String merchantID, double price, int quantity) {
-        this.idPK.setMerchantId(merchantID);
-        this.idPK.setProductId(productId);
-        this.price = price;
-        this.quantity = quantity;
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public int getQuantity() {
@@ -28,19 +62,12 @@ public class Inventory {
         this.quantity = quantity;
     }
 
-    public IdPK getIdPK() {
-        return idPK;
-    }
 
-    public void setIdPK(IdPK idPK) {
-        this.idPK = idPK;
-    }
-
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 }
