@@ -1,27 +1,28 @@
 package com.example.ProductsService.model;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Map;
 
-@Table(name = "Products")
+@Table(name = "products")
 @Entity
 public class Products {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int productId;
+
+    private String brandName;
     private int categoryId;
     private String productName;
-    private List<Map<String,String>> productDescription;
-    private double bestPrice;
+    private String productDescription;
+    private int bestPrice;
     private int totalStock;
 
-    public Products(int categoryId, String productName, List<Map<String, String>> productDescription, double bestPrice, int totalStock) {
-        this.categoryId = categoryId;
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.bestPrice = bestPrice;
-        this.totalStock = totalStock;
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
     }
 
     public int getProductId() {
@@ -44,11 +45,11 @@ public class Products {
         this.productName = productName;
     }
 
-    public List<Map<String, String>> getProductDescription() {
+    public String getProductDescription() {
         return productDescription;
     }
 
-    public void setProductDescription(List<Map<String, String>> productDescription) {
+    public void setProductDescription(String productDescription) {
         this.productDescription = productDescription;
     }
 
@@ -56,7 +57,7 @@ public class Products {
         return bestPrice;
     }
 
-    public void setBestPrice(double bestPrice) {
+    public void setBestPrice(int bestPrice) {
         this.bestPrice = bestPrice;
     }
 
@@ -66,5 +67,10 @@ public class Products {
 
     public void setTotalStock(int totalStock) {
         this.totalStock = totalStock;
+    }
+
+    @Override
+    public String toString() {
+        return this.brandName + " " + this.categoryId + " " + this.productName;
     }
 }

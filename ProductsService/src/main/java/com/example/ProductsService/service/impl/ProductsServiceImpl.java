@@ -31,7 +31,23 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
+    public List<Products> findByCategoryId(int id) {
+        List<Products> productsList = productsRepository.findByCategoryId(id);
+        return productsList;
+    }
+
+    @Override
     public void deleteById(int id) {
         productsRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Products> findByCategoryIdAndBrandName(int id, String brandName) {
+        return productsRepository.findByCategoryIdAndBrandName(id,brandName);
+    }
+
+    @Override
+    public Products getByProductName(String productName) {
+        return productsRepository.getByProductName(productName);
     }
 }
