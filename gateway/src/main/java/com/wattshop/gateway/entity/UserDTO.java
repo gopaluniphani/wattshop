@@ -1,19 +1,7 @@
 package com.wattshop.gateway.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
-
-@Entity
-@Table(name = "myuser")
-public class MyUser {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+public class UserDTO {
     private String username;
-
-    @JsonIgnore
     private String password;
 
     public String getUsername() {
