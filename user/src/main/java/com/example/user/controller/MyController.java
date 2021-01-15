@@ -1,7 +1,6 @@
 package com.example.user.controller;
 
 import com.example.user.entity.User;
-import com.example.user.repository.UserRepository;
 import com.example.user.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +22,7 @@ public class MyController {
         return userService.save(user);
     }
 
-    @GetMapping(value="findall")
+    @GetMapping(value="/findall")
     List<User> findall(){
         return userService.findAll();
     }
