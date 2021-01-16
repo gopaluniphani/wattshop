@@ -1,21 +1,37 @@
 package com.example.ProductsService.model;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Table(name = "products")
-@Entity
+import java.util.List;
+
+@Document
 public class Products {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int productId;
-
+    private String id;
     private String brandName;
     private int categoryId;
     private String productName;
     private String productDescription;
-    private int bestPrice;
-    private int totalStock;
+    private List<Specification> specificationList;
+    private float rating;
+
+    public List<Specification> getSpecificationList() {
+        return specificationList;
+    }
+
+    public void setSpecificationList(List<Specification> specificationList) {
+        this.specificationList = specificationList;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getBrandName() {
         return brandName;
@@ -25,9 +41,7 @@ public class Products {
         this.brandName = brandName;
     }
 
-    public int getProductId() {
-        return productId;
-    }
+
 
     public int getCategoryId() {
         return categoryId;
@@ -53,20 +67,12 @@ public class Products {
         this.productDescription = productDescription;
     }
 
-    public double getBestPrice() {
-        return bestPrice;
+    public float getRating() {
+        return rating;
     }
 
-    public void setBestPrice(int bestPrice) {
-        this.bestPrice = bestPrice;
-    }
-
-    public int getTotalStock() {
-        return totalStock;
-    }
-
-    public void setTotalStock(int totalStock) {
-        this.totalStock = totalStock;
+    public void setRating(float rating) {
+        this.rating = rating;
     }
 
     @Override

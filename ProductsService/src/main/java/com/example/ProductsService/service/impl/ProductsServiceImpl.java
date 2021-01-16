@@ -6,6 +6,7 @@ import com.example.ProductsService.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,30 +21,32 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
-    public Products findById(int id) {
+    public Products findById(String id) {
         return productsRepository.findById(id).get();
     }
 
     @Override
     public List<Products> findAll() {
-        List<Products> productsList = (List<Products>) productsRepository.findAll();
+        List<Products> productsList = productsRepository.findAll();
         return productsList;
     }
 
     @Override
     public List<Products> findByCategoryId(int id) {
-        List<Products> productsList = productsRepository.findByCategoryId(id);
+        Iterable<Products> productsIterable = productsRepository.findByCategoryId(id);
+        List<Products> productsList = new ArrayList<>();
+        productsIterable.forEach(productsList::add);
         return productsList;
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(String id) {
         productsRepository.deleteById(id);
     }
 
     @Override
     public List<Products> findByCategoryIdAndBrandName(int id, String brandName) {
-        return productsRepository.findByCategoryIdAndBrandName(id,brandName);
+        return productsRepository.findByCategoryIdAndBrandName(id, brandName);
     }
 
     @Override
