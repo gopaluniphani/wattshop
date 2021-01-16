@@ -1,6 +1,8 @@
 package com.example.auth.controller;
 
+import com.example.auth.entity.MyUser;
 import com.example.auth.entity.UserDTO;
+import com.example.auth.repositories.UserRepository;
 import com.example.auth.security.JwtTokenUtil;
 import com.example.auth.security.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,22 +30,28 @@ public class JwtAuthenticationController {
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @PostMapping(value = "/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
+        MyUser myUser = userRepository.findByUsername(authenticationRequest.getUsername());
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-
         final String token = jwtTokenUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok(new JwtResponse(token));
+
+        return ResponseEntity.ok(new JwtResponse(token, myUser));
     }
 
     @PostMapping(value = "/register")
     public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
-        System.out.println("Inside register post mapping");
-        return ResponseEntity.ok(userDetailsService.save(user));
+        MyUser myUser = userDetailsService.save(user);
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
+        final String token = jwtTokenUtil.generateToken(userDetails);
+        return ResponseEntity.ok(new JwtResponse(token, myUser));
     }
 
     private void authenticate(String username, String password) throws Exception {
