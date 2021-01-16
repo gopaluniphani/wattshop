@@ -1,8 +1,8 @@
-package com.wattshop.gateway.security;
+package com.example.auth.security;
 
-import com.wattshop.gateway.entity.MyUser;
-import com.wattshop.gateway.entity.UserDTO;
-import com.wattshop.gateway.repository.MyUserRepository;
+import com.example.auth.entity.MyUser;
+import com.example.auth.entity.UserDTO;
+import com.example.auth.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,27 +17,25 @@ import java.util.ArrayList;
 public class JwtUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private MyUserRepository myUserRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder bcryptEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        MyUser user = myUserRepository.findByUsername(username);
-        if (user == null) {
+        MyUser myUser = userRepository.findByUsername(username);
+        if(myUser == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
+        } else {
+            return new User(myUser.getUsername(), myUser.getPassword(), new ArrayList<>());
         }
-        return new User(user.getUsername(), user.getPassword(),
-                new ArrayList<>());
     }
 
     public MyUser save(UserDTO user) {
         MyUser newUser = new MyUser();
         newUser.setUsername(user.getUsername());
         newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
-        return myUserRepository.save(newUser);
+        return userRepository.save(newUser);
     }
-
 }

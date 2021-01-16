@@ -1,4 +1,4 @@
-package com.wattshop.gateway.entity;
+package com.example.auth.entity;
 
 public class UserDTO {
     private String username;
@@ -20,3 +20,4 @@ public class UserDTO {
         this.password = password;
     }
 }
+

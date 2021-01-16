@@ -1,4 +1,4 @@
-package com.wattshop.gateway.security;
+package com.example.auth.controller;
 
 import java.io.Serializable;
 

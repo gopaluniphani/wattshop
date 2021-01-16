@@ -1,4 +1,4 @@
-package com.wattshop.gateway.entity;
+package com.example.auth.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -9,12 +9,20 @@ import javax.persistence.*;
 public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     private String username;
 
     @JsonIgnore
     private String password;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
@@ -32,3 +40,4 @@ public class MyUser {
         this.password = password;
     }
 }
+

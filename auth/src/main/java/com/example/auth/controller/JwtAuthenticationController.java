@@ -1,6 +1,8 @@
-package com.wattshop.gateway.security;
+package com.example.auth.controller;
 
-import com.wattshop.gateway.entity.UserDTO;
+import com.example.auth.entity.UserDTO;
+import com.example.auth.security.JwtTokenUtil;
+import com.example.auth.security.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,10 +10,13 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin
 @RestController
+@CrossOrigin
 public class JwtAuthenticationController {
 
     @Autowired
@@ -37,6 +42,7 @@ public class JwtAuthenticationController {
 
     @PostMapping(value = "/register")
     public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+        System.out.println("Inside register post mapping");
         return ResponseEntity.ok(userDetailsService.save(user));
     }
 
