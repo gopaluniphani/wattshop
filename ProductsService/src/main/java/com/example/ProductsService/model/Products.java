@@ -16,6 +16,7 @@ public class Products {
     private String productDescription;
     private List<Specification> specificationList;
     private float rating;
+    private String imageUrl;
 
     public List<Specification> getSpecificationList() {
         return specificationList;
@@ -71,6 +72,14 @@ public class Products {
 
     public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override
