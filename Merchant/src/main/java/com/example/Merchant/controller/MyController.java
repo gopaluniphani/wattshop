@@ -28,7 +28,7 @@ public class MyController {
         return merchantService.save(merchant);
     }
 
-    @PutMapping(value="/update")
+    @PutMapping(value="/")
     public Merchant update(@RequestBody Merchant merchant){
         return merchantService.save(merchant);
     }

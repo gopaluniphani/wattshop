@@ -20,13 +20,13 @@ public class MerchantServiceImpl implements MerchantService {
     }
 
     @Override
-    public Merchant findById(int id) {
-        return merchantRepository.findById(id).get();
+    public Merchant findById(int merchantId) {
+        return merchantRepository.findById(merchantId).get();
     }
 
     @Override
-    public void deleteById(int id) {
-        merchantRepository.deleteById(id);
+    public void deleteById(int merchantId) {
+        merchantRepository.deleteById(merchantId);
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface MerchantService {
     Merchant save(Merchant merchant);
-    Merchant findById(int id);
-    void deleteById(int id);
+    Merchant findById(int merchantId);
+    void deleteById(int merchantId);
     List<Merchant> findAll();
 }
