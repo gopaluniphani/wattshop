@@ -1,6 +1,7 @@
 package com.example.user.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -13,6 +14,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    @Indexed(unique = true)
     private String email;
     private Address address;
     private String imageUrl;
