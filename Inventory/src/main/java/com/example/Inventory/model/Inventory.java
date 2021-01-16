@@ -1,21 +1,41 @@
 package com.example.Inventory.model;
 
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "Inventory")
 @Entity
-@IdClass(IdPK.class)
 public class Inventory {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int inventoryId;
     private int merchantId;
-    @Id
     private int productId;
+    private String brandName;
+    private String productName;
+    private int price;
+    private int quantity;
+
+    public Inventory() {
+    }
+
+    public Inventory(int inventoryId, int merchantId, int productId, String brandName, String productName, int price, int quantity) {
+        this.inventoryId = inventoryId;
+        this.merchantId = merchantId;
+        this.productId = productId;
+        this.brandName = brandName;
+        this.productName = productName;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public int getInventoryId() {
+        return inventoryId;
+    }
+
+    public void setInventoryId(int inventoryId) {
+        this.inventoryId = inventoryId;
+    }
 
     public int getMerchantId() {
         return merchantId;
@@ -32,11 +52,6 @@ public class Inventory {
     public void setProductId(int productId) {
         this.productId = productId;
     }
-
-    private String brandName;
-    private String productName;
-    private int price;
-    private int quantity;
 
     public String getBrandName() {
         return brandName;
@@ -70,4 +85,5 @@ public class Inventory {
     public void setPrice(int price) {
         this.price = price;
     }
+
 }

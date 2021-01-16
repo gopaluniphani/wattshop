@@ -15,7 +15,7 @@ public class InventoryController {
     InventoryServiceImpl inventoryService;
 
     @GetMapping(value = "/merchant/display/{merchantId}")
-    public List<Inventory> findByMerchantId(@PathVariable("id") String merchantId) {
+    public List<Inventory> findByMerchantId(@PathVariable("merchantId") int merchantId) {
         return inventoryService.findByMerchantId(merchantId);
     }
 
@@ -25,13 +25,18 @@ public class InventoryController {
     }
 
     @PostMapping(value = "/merchant/save")
-    public void save(Inventory inventory) {
-        inventoryService.save(inventory);
+    public Inventory save(@RequestBody Inventory inventory) {
+        return inventoryService.save(inventory);
     }
 
     @GetMapping(value = "/user/display/{productId}")
     public List<Inventory> findByProductId(@PathVariable("productId") int id) {
         return inventoryService.findByProductId(id);
+    }
+
+    @GetMapping(value = "/user/display/{inventoryId}")
+    public Inventory findByInventoryId(@PathVariable("inventoryId")int id) {
+        return inventoryService.findById(id);
     }
 
 }

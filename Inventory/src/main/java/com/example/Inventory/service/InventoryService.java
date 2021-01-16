@@ -8,6 +8,7 @@ import java.util.List;
 @Service
 public interface InventoryService {
     Inventory save (Inventory inventory);
-    List<Inventory> findByMerchantId (String id);
+    List<Inventory> findByMerchantId (int id);
     List<Inventory> findByProductId(int productId);
+    Inventory findById(int id);
 }
