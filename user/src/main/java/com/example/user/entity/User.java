@@ -15,6 +15,7 @@ public class User {
     private String phoneNumber;
     private String email;
     private Address address;
+    private String imageUrl;
 
     private List<Date> loginHistory;
     private List<Cart> cart;
@@ -81,6 +82,14 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public void updateLoginHistory(Date date) {
