@@ -9,31 +9,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/api/sales")
+@RequestMapping(value = "/api/sales")
 public class MyController {
     @Autowired
     SalesService salesService;
 
-    @GetMapping(value="/")
-    List<Sales> findAll(){
+    @GetMapping(value = "/")
+    List<Sales> findAll() {
         return salesService.findAll();
     }
 
-    @GetMapping(value="/{id}")
-    List<Sales> findById(@PathVariable("id") int id){
-        return salesService.findByMerchantid(id);
+    @GetMapping(value = "/user/{id}")
+    List<Sales> findById(@PathVariable("id") String id) {
+        return salesService.findByUserId(id);
     }
 
-    @PostMapping(value="/")
-    public Sales save(@RequestBody Sales sales){
+    @PostMapping(value = "/")
+    public Sales save(@RequestBody Sales sales) {
         return salesService.save(sales);
     }
 
-    @PutMapping(value="/update")
-    public Sales update(@RequestBody Sales sales){
+    @PutMapping(value = "/")
+    public Sales update(@RequestBody Sales sales) {
         return salesService.save(sales);
     }
 
-    @GetMapping(value="/display/merchant/{id}")
-    List<Sales> displayMerchantDetails(@PathVariable("id") int id) {return salesService.findByMerchantid(id);}
+    @GetMapping(value = "/merchant/{id}")
+    List<Sales> displayMerchantDetails(@PathVariable("id") int id) {
+        return salesService.findByMerchantId(id);
+    }
 }

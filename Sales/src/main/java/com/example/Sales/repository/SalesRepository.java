@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SalesRepository extends CrudRepository<Sales,Integer> {
+public interface SalesRepository extends CrudRepository<Sales, Integer> {
     List<Sales> findByMerchantId(int merchantId);
+
+    List<Sales> findByUserId(String userId);
 }

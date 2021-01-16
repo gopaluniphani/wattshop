@@ -31,17 +31,25 @@ public class SalesServiceImpl implements SalesService {
 
     @Override
     public List<Sales> findAll() {
-        Iterable<Sales> salesIterable=salesRepository.findAll();
-        List<Sales> salesList=new ArrayList<>();
+        Iterable<Sales> salesIterable = salesRepository.findAll();
+        List<Sales> salesList = new ArrayList<>();
         salesIterable.forEach((salesList::add));
         return salesList;
     }
 
     @Override
-    public List<Sales> findByMerchantid(int merchantId) {
-        Iterable<Sales> salesIterable=salesRepository.findByMerchantId(merchantId);
-        List<Sales> salesList=new ArrayList<>();
+    public List<Sales> findByMerchantId(int merchantId) {
+        Iterable<Sales> salesIterable = salesRepository.findByMerchantId(merchantId);
+        List<Sales> salesList = new ArrayList<>();
         salesIterable.forEach((salesList::add));
+        return salesList;
+    }
+
+    @Override
+    public List<Sales> findByUserId(String userId) {
+        Iterable<Sales> userIterable = salesRepository.findByUserId(userId);
+        List<Sales> salesList = new ArrayList<>();
+        userIterable.forEach((salesList::add));
         return salesList;
     }
 }
