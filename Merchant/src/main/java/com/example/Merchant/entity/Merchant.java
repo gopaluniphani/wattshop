@@ -15,6 +15,7 @@ public class Merchant {
     private String gst;
     private float rating;
     private String phoneNumber;
+    private String imageUrl;
 
     public int getMerchantId() {
         return merchantId;
@@ -70,6 +71,14 @@ public class Merchant {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
 
