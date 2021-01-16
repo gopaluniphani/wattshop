@@ -9,7 +9,7 @@ import java.util.List;
 @Document
 public class User {
     @Id
-    private int id;
+    private String id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -35,7 +35,7 @@ public class User {
         this.cart = cart;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -47,7 +47,7 @@ public class User {
         this.email = email;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -81,5 +81,9 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public void updateLoginHistory(Date date) {
+        this.loginHistory.add(date);
     }
 }

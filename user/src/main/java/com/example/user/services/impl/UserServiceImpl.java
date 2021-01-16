@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,7 +22,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(int id) {
+    public User findById(String id) {
         return userRepository.findById(id).get();
     }
 
@@ -32,5 +33,13 @@ public class UserServiceImpl implements UserService {
         if(userIterable != null)
             userIterable.forEach(userList::add);
         return userList;
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        user.updateLoginHistory(new Date());
+        userRepository.save(user);
+        return user;
     }
 }
