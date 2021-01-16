@@ -8,35 +8,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/")
+@RequestMapping(value = "/api/inventory")
 public class InventoryController {
-    @Autowired
 
+    @Autowired
     InventoryServiceImpl inventoryService;
 
-    @GetMapping(value = "/merchant/display/{merchantId}")
+    @GetMapping(value = "/merchant/{merchantId}")
     public List<Inventory> findByMerchantId(@PathVariable("merchantId") int merchantId) {
         return inventoryService.findByMerchantId(merchantId);
     }
 
-    @PutMapping(value = "/merchant/update")
+    @PutMapping(value = "/")
     public void update(@RequestBody Inventory inventory) {
         inventoryService.save(inventory);
     }
 
-    @PostMapping(value = "/merchant/save")
+    @PostMapping(value = "/")
     public Inventory save(@RequestBody Inventory inventory) {
         return inventoryService.save(inventory);
     }
 
-    @GetMapping(value = "/user/display/{productId}")
-    public List<Inventory> findByProductId(@PathVariable("productId") int id) {
+    @GetMapping(value = "/product/{productId}")
+    public List<Inventory> findByProductId(@PathVariable("productId") String id) {
         return inventoryService.findByProductId(id);
     }
 
-    @GetMapping(value = "/user/display/{inventoryId}")
-    public Inventory findByInventoryId(@PathVariable("inventoryId")int id) {
+    @GetMapping(value = "/{inventoryId}")
+    public Inventory findByInventoryId(@PathVariable("inventoryId") int id) {
         return inventoryService.findById(id);
     }
-
 }

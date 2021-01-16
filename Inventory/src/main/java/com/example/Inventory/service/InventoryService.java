@@ -9,6 +9,6 @@ import java.util.List;
 public interface InventoryService {
     Inventory save (Inventory inventory);
     List<Inventory> findByMerchantId (int id);
-    List<Inventory> findByProductId(int productId);
+    List<Inventory> findByProductId(String productId);
     Inventory findById(int id);
 }

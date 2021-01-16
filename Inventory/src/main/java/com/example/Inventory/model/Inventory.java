@@ -2,7 +2,7 @@ package com.example.Inventory.model;
 
 import javax.persistence.*;
 
-@Table(name = "Inventory")
+@Table(name = "inventory")
 @Entity
 public class Inventory {
 
@@ -10,7 +10,7 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int inventoryId;
     private int merchantId;
-    private int productId;
+    private String productId;
     private String brandName;
     private String productName;
     private int price;
@@ -19,7 +19,7 @@ public class Inventory {
     public Inventory() {
     }
 
-    public Inventory(int inventoryId, int merchantId, int productId, String brandName, String productName, int price, int quantity) {
+    public Inventory(int inventoryId, int merchantId, String productId, String brandName, String productName, int price, int quantity) {
         this.inventoryId = inventoryId;
         this.merchantId = merchantId;
         this.productId = productId;
@@ -45,11 +45,11 @@ public class Inventory {
         this.merchantId = merchantId;
     }
 
-    public int getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 

@@ -26,7 +26,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public List<Inventory> findByProductId(int productId) {
+    public List<Inventory> findByProductId(String productId) {
         return inventoryRepository.findByProductId(productId);
     }
 

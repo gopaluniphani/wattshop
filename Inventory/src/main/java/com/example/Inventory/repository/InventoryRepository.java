@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface InventoryRepository extends CrudRepository<Inventory,Integer> {
     List<Inventory> findByMerchantId(int merchantId);
-    List<Inventory> findByProductId(int productId);
+    List<Inventory> findByProductId(String productId);
 }
