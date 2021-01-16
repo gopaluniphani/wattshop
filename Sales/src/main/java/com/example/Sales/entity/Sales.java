@@ -17,6 +17,7 @@ public class Sales {
     private int quantity;
     private int price;
     private Date date;
+    private float rating;
 
     public int getSalesId() {
         return salesId;
@@ -72,5 +73,13 @@ public class Sales {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
     }
 }
