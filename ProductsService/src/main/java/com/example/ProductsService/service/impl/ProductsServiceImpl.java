@@ -4,6 +4,11 @@ import com.example.ProductsService.model.Products;
 import com.example.ProductsService.repository.ProductsRepository;
 import com.example.ProductsService.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,6 +19,9 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Autowired
     ProductsRepository productsRepository;
+
+    @Autowired
+    MongoTemplate mongoTemplate;
 
     @Override
     public Products save(Products product) {
@@ -27,8 +35,7 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public List<Products> findAll() {
-        List<Products> productsList = productsRepository.findAll();
-        return productsList;
+        return productsRepository.findAll();
     }
 
     @Override
@@ -52,5 +59,10 @@ public class ProductsServiceImpl implements ProductsService {
     @Override
     public Products getByProductName(String productName) {
         return productsRepository.getByProductName(productName);
+    }
+
+    @Override
+    public List<Products> sortByQuery(Query q) {
+        return mongoTemplate.find(q, Products.class);
     }
 }

@@ -41,8 +41,6 @@ public class Products {
         this.brandName = brandName;
     }
 
-
-
     public int getCategoryId() {
         return categoryId;
     }

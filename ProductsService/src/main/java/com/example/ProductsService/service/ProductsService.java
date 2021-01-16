@@ -1,6 +1,7 @@
 package com.example.ProductsService.service;
 
 import com.example.ProductsService.model.Products;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface ProductsService {
     void deleteById(String id);
     List<Products> findByCategoryIdAndBrandName(int id, String brandName);
     Products getByProductName(String productName);
+
+    List<Products> sortByQuery(Query q);
 }

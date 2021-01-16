@@ -3,6 +3,8 @@ package com.example.ProductsService.controller;
 import com.example.ProductsService.model.Products;
 import com.example.ProductsService.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -20,7 +22,9 @@ public class ProductsController {
     //to send the list of products to user homepage
     @GetMapping(value = "/")
     public List<Products> findAll() {
-        return productsService.findAll();
+        Query query = new Query();
+        query.with(Sort.by(new Sort.Order(Sort.Direction.DESC, "rating")));
+        return productsService.sortByQuery(query);
     }
 
     //to send the details of a single product when the user needs to check a specific item
