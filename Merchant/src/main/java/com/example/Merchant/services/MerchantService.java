@@ -9,4 +9,5 @@ public interface MerchantService {
     Merchant findById(int merchantId);
     void deleteById(int merchantId);
     List<Merchant> findAll();
+    Merchant findByEmail(String email);
 }

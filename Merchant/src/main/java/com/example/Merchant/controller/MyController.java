@@ -37,4 +37,9 @@ public class MyController {
     public void deleteById(@PathVariable("empId") int id){
         merchantService.deleteById((id));
     }
+
+    @GetMapping(value = "/email/{email}")
+    public Merchant findByEmail(@PathVariable("email") String email) {
+        return merchantService.findByEmail(email);
+    }
 }

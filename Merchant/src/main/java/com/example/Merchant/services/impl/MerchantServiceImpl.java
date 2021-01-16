@@ -36,4 +36,9 @@ public class MerchantServiceImpl implements MerchantService {
         merchantIterable.forEach(merchantList::add);
         return merchantList;
     }
+
+    @Override
+    public Merchant findByEmail(String email) {
+        return merchantRepository.findByEmail(email);
+    }
 }

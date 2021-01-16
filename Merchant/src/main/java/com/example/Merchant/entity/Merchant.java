@@ -3,7 +3,7 @@ package com.example.Merchant.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="merchant")
+@Table(name = "merchant")
 public class Merchant {
 
     @Id
@@ -11,6 +11,7 @@ public class Merchant {
     private int merchantId;
     private String firstName;
     private String lastName;
+    @Column(unique = true)
     private String email;
     private String gst;
     private float rating;
