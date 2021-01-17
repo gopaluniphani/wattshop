@@ -1,16 +1,16 @@
+server:
+  port: 8764
+
 spring:
   application:
-    name: merchant
-  datasource:
-    url: jdbc:postgresql://localhost:5432/merchant
-    username: postgres
-    password:
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-
-server:
-  port: 8763
+    name: users
+  data:
+    mongodb:
+      database: users
+      host: localhost
+      password:
+      port: 27017
+      auto-index-creation: true
 
 info:
   app:

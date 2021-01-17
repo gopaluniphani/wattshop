@@ -1,16 +1,16 @@
+server:
+  port: 8765
+
 spring:
   application:
-    name: merchant
+    name: inventory
   datasource:
-    url: jdbc:postgresql://localhost:5432/merchant
+    url: jdbc:postgresql://localhost:5432/inventory
     username: postgres
     password:
   jpa:
     hibernate:
       ddl-auto: create-drop
-
-server:
-  port: 8763
 
 info:
   app:

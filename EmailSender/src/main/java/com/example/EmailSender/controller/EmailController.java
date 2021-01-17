@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/sendmail")
+@RequestMapping(value = "/api/email")
 public class EmailController {
 
     private List<Invoice> invoices;

@@ -1,8 +1,10 @@
 package com.example.Sales.services.impl;
 
+import com.example.Sales.entity.RatingKafka;
 import com.example.Sales.entity.Sales;
 import com.example.Sales.repository.SalesRepository;
 import com.example.Sales.services.SalesService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +53,17 @@ public class SalesServiceImpl implements SalesService {
         List<Sales> salesList = new ArrayList<>();
         userIterable.forEach((salesList::add));
         return salesList;
+    }
+
+    @Override
+    public List<Sales> findByProductId(String productId) {
+        return salesRepository.findByProductId(productId);
+    }
+
+    @Override
+    public String postKafka(RatingKafka ratingKafka) throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String string = objectMapper.writeValueAsString(ratingKafka);
+        return string;
     }
 }

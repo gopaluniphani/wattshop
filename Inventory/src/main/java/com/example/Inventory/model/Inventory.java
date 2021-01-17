@@ -13,13 +13,13 @@ public class Inventory {
     private String productId;
     private String brandName;
     private String productName;
-    private int price;
+    private float price;
     private int quantity;
 
     public Inventory() {
     }
 
-    public Inventory(int inventoryId, int merchantId, String productId, String brandName, String productName, int price, int quantity) {
+    public Inventory(int inventoryId, int merchantId, String productId, String brandName, String productName, float price, int quantity) {
         this.inventoryId = inventoryId;
         this.merchantId = merchantId;
         this.productId = productId;
@@ -78,11 +78,11 @@ public class Inventory {
     }
 
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

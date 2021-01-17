@@ -1,10 +1,13 @@
 package com.example.ProductsService.controller;
 
 import com.example.ProductsService.model.Products;
+//import com.example.ProductsService.model.RatingKafka;
 import com.example.ProductsService.service.ProductsService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -47,23 +50,34 @@ public class ProductsController {
 
     //to get all the brand names selling a product of particular category
     @GetMapping(value = "/getbrandname/{categoryId}")
-    public Set<String> getBrandName(@PathVariable("categoryId") int id) {
-        List<Products> productsList = productsService.findByCategoryId(id);
-        Set<String> brandNames = new HashSet<>();
-        for (Products product : productsList) {
-            brandNames.add(product.getBrandName());
-        }
-        return brandNames;
+    public List<Products> getBrandName(@PathVariable("categoryId") int id) {
+//        List<Products> productsList = productsService.findByCategoryId(id);
+//        Set<String> brandNames = new HashSet<>();
+//        for (Products product : productsList) {
+//            brandNames.add(product.getBrandName());
+//        }
+//        return brandNames;
+        return productsService.findByCategoryId(id);
     }
 
     //to get the products names for all the items sold in a particular category of a particular brand
     @GetMapping(value = "/{categoryId}/{brandName}")
-    public List<String> getProductNames(@PathVariable("categoryId") int id, @PathVariable("brandName") String brandName) {
-        List<Products> productsList = productsService.findByCategoryIdAndBrandName(id, brandName);
-        List<String> productNames = new ArrayList<>();
-        for (Products product : productsList) {
-            productNames.add(product.getProductName());
-        }
-        return productNames;
+    public List<Products> getProductNames(@PathVariable("categoryId") int id, @PathVariable("brandName") String brandName) {
+//        List<Products> productsList = productsService.findByCategoryIdAndBrandName(id, brandName);
+//        List<String> productNames = new ArrayList<>();
+//        for (Products product : productsList) {
+//            productNames.add(product.getProductName());
+//        }
+//        return productNames;
+        return productsService.findByCategoryIdAndBrandName(id,brandName);
     }
+
+//    @KafkaListener(topics = {"productRating"})
+//    public void getTopics(@RequestBody String string)throws Exception {
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        RatingKafka productRating = objectMapper.readValue(string,RatingKafka.class);
+//        Products products = productsService.findById(productRating.getProductId());
+//        products.setRating(productRating.getRating());
+//        productsService.save(products);
+// }
 }

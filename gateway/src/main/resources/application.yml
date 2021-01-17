@@ -11,12 +11,39 @@ spring:
         uri: lb://merchant
         predicates:
         - Path=/api/merchant/**
+
+      - id: products
+        uri: lb://products
+        predicates:
+        - Path=/api/products/**
+
+      - id: users
+        uri: lb://users
+        predicates:
+        - Path=/api/user/**
+
+      - id: inventory
+        uri: lb://inventory
+        predicates:
+        - Path=/api/inventory/**
+
+      - id: sales
+        uri: lb://sales
+        predicates:
+        - Path=/api/sales/**
+
+      - id: email
+        uri: lb://email
+        predicates:
+        - Path=/api/email/**
+
       - id: registry
         uri: lb://registry
         predicates:
         - Path=/registry/**
         filters:
         - StripPrefix=1
+
       - id: eureka
         uri: lb://registry
         predicates:

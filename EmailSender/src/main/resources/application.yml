@@ -1,16 +1,21 @@
+server:
+  port: 8767
+
 spring:
   application:
-    name: merchant
-  datasource:
-    url: jdbc:postgresql://localhost:5432/merchant
-    username: postgres
-    password:
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
+    name: email
 
-server:
-  port: 8763
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: wattshop.home@gmail.com
+    password: wattshop_1234
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 info:
   app:
