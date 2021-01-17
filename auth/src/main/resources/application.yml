@@ -1,0 +1,30 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 325363078952-9snig7h2mddv8up2dlpmsbmal98t0l8v.apps.googleusercontent.com
+            clientSecret: boHyTbOK5s5aYS11OW1fQCgM
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+          github:
+            clientId: 34583b3f6e029d000cf1
+            clientSecret: 6082441de4c2cdcc5769e2edfb6552a2e158a250
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - user:email
+              - read:user
+app:
+  auth:
+    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+    tokenExpirationMsec: 864000000
+  oauth2:
+    authorizedRedirectUris:
+      - https://www.google.com
+      - http://localhost:8766/oauth2/callback/google
+      - http://localhost:8766/oauth2/redirect
+      - myandroidapp://oauth2/redirect
+      - myiosapp://oauth2/redirect
