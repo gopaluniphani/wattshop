@@ -26,12 +26,17 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public List<Inventory> findByProductId(String productId) {
-        return inventoryRepository.findByProductId(productId);
+    public List<Inventory> findByProductIdOrderByQuantityDesc(String productId) {
+        return inventoryRepository.findByProductIdOrderByQuantityDesc(productId);
     }
 
     @Override
     public Inventory findById(int id) {
        return inventoryRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Inventory> findByProductIdAndMerchantId(String productId, int merchantId) {
+        return inventoryRepository.findByProductIdAndMerchantId(productId,merchantId);
     }
 }

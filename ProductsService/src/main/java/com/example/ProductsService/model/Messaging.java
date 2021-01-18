@@ -1,11 +1,12 @@
-package com.example.Sales.entity;
+package com.example.ProductsService.model;
 
-public class RatingKafka {
+public class Messaging {
     private String productId;
     private float rating;
     private int merchantId;
+    private int quantity;
 
-    public RatingKafka() {
+    public Messaging() {
     }
 
     public String getProductId() {
@@ -30,5 +31,13 @@ public class RatingKafka {
 
     public void setMerchantId(int merchantId) {
         this.merchantId = merchantId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

@@ -13,8 +13,8 @@ public class MyController {
     @Autowired
     UserService userService;
 
-    @GetMapping(value = "/{id}")
-    public User findById(@PathVariable("id") String id) {
+    @GetMapping(value = "/{userId}")
+    public User findById(@PathVariable("userId") String id) {
         return userService.findById(id);
     }
 
@@ -24,18 +24,25 @@ public class MyController {
     }
 
     @GetMapping(value = "/")
-    List<User> findall() {
+    public List<User> findall() {
         return userService.findAll();
     }
 
     @PutMapping(value = "/")
-    User update(@RequestBody User user) {
+    public User update(@RequestBody User user) {
         return userService.save(user);
     }
 
     @GetMapping(value = "/email/{email}")
-    User findByEmail(@PathVariable("email") String email) {
+    public User findByEmail(@PathVariable("email") String email) {
         return userService.findByEmail(email);
+    }
+
+    @PutMapping(value = "/cart/{userId}")
+    public User updateCart(@PathVariable("userId") String userId, @RequestBody User userWithNewCart) {
+        User user = userService.findById(userId);
+        user.setCart(userWithNewCart.getCart());
+        return userService.save(user);
     }
 }
 

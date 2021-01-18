@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping(value="/elastic")
+@RequestMapping(value="/api/search")
 public class MyController {
     @Autowired
     ElasticSearchService elasticSearchService;

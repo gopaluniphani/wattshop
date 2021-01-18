@@ -15,7 +15,7 @@ public class Sales {
     private String userId;
     private int merchantId;
     private int quantity;
-    private int price;
+    private float price;
     private Date date;
     private float rating;
 
@@ -59,11 +59,11 @@ public class Sales {
         this.quantity = quantity;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

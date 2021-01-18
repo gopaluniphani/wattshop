@@ -1,14 +1,14 @@
-package com.example.user.entity;
+package com.example.Inventory.model;
 
 public class Cart {
-    private String inventoryId;
+    private int inventoryId;
     private int quantity;
 
-    public String getProductId() {
+    public int getInventoryId() {
         return inventoryId;
     }
 
-    public void setProductId(String inventoryId) {
+    public void setInventoryId(int inventoryId) {
         this.inventoryId = inventoryId;
     }
 

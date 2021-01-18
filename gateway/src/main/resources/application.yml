@@ -7,6 +7,10 @@ spring:
   cloud:
     gateway:
       routes:
+      - id: search
+        uri: lb://serach
+        predicates:
+        - Path=/api/search/**
       - id: merchant
         uri: lb://merchant
         predicates:
