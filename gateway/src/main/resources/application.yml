@@ -8,7 +8,7 @@ spring:
     gateway:
       routes:
       - id: search
-        uri: lb://serach
+        uri: lb://search
         predicates:
         - Path=/api/search/**
       - id: merchant

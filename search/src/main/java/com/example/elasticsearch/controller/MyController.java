@@ -32,7 +32,7 @@ public class MyController {
         return elasticSearchService.findAll();
     }
 
-    @GetMapping(value="/search/{searchTerm}")
+    @GetMapping(value="/{searchTerm}")
     public List<Product> search(@PathVariable("searchTerm") String search){
         return elasticSearchService.processSearch(search);
     }
