@@ -10,27 +10,27 @@ spring:
       - id: pagebook-search
         uri: lb://pagebook-search
         predicates:
-        - Path=/pagebook/api/**
+        - Path=/pagebook/api/search/**
 
       - id: pagebook-business
         uri: lb://pagebook-business
         predicates:
-        - Path=/pagebook/api/**
+        - Path=/pagebook/api/business/**
 
       - id: pagebook-stories
         uri: lb://pagebook-stories
         predicates:
-        - Path=/pagebook/api/**
+        - Path=/pagebook/api/story/**
 
       - id: pagebook-profile
         uri: lb://pagebook-profile
         predicates:
-        - Path=/pagebook/api/**
+        - Path=/pagebook/api/profile/**
 
       - id: pagebook-posts
         uri: lb://pagebook-posts
         predicates:
-        - Path=/pagebook/api/**
+        - Path=/pagebook/api/post/**
 
       - id: registry
         uri: lb://registry
