@@ -7,39 +7,30 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: search
-        uri: lb://search
+      - id: pagebook-search
+        uri: lb://pagebook-search
         predicates:
-        - Path=/api/search/**
-      - id: merchant
-        uri: lb://merchant
-        predicates:
-        - Path=/api/merchant/**
+        - Path=/pagebook/api/**
 
-      - id: products
-        uri: lb://products
+      - id: pagebook-business
+        uri: lb://pagebook-business
         predicates:
-        - Path=/api/products/**
+        - Path=/pagebook/api/**
 
-      - id: users
-        uri: lb://users
+      - id: pagebook-stories
+        uri: lb://pagebook-stories
         predicates:
-        - Path=/api/user/**
+        - Path=/pagebook/api/**
 
-      - id: inventory
-        uri: lb://inventory
+      - id: pagebook-profile
+        uri: lb://pagebook-profile
         predicates:
-        - Path=/api/inventory/**
+        - Path=/pagebook/api/**
 
-      - id: sales
-        uri: lb://sales
+      - id: pagebook-posts
+        uri: lb://pagebook-posts
         predicates:
-        - Path=/api/sales/**
-
-      - id: email
-        uri: lb://email
-        predicates:
-        - Path=/api/email/**
+        - Path=/pagebook/api/**
 
       - id: registry
         uri: lb://registry
